@@ -1,0 +1,108 @@
+﻿@model IEnumerable<WYsystem.Models.w_admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row cm-fix-height">
+
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"> <h2>ユーザー管理</h2></div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.username)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.password)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.nickname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.power)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.createtime)
+                            </th>
+                            <th>操作</th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.password)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nickname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.power)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.createtime)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("編集", "Edit", new { id = item.id }) |
+                                    <a href="/Wadmin/DeleteConfirmed/@item.id" onclick="return confirm('削除しますか。')">削除</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    <!--パラメータ登録実行-->
+                    <form action="/Wadmin/Create" style="margin-top:40px;" method="post">
+                        <table class="table">
+                            <tr>
+                                <td align="right">
+                                    アカウント:
+                                </td>
+                                <td>
+                                    <input class="form-control" name="username" required placeholder="アカウントを入力してください。" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    パスワード:
+                                </td>
+                                <td>
+                                    <input class="form-control" name="password" required placeholder="パスワードを入力してください。" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    ユーザー名:
+                                </td>
+                                <td>
+                                    <input class="form-control" name="nickname" required placeholder="ユーザー名を入力してください。" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    権限:
+                                </td>
+                                <td>
+                                    <input class="form-control" name="power" required placeholder="権限を入力してください。" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <input type="submit" class="btn btn-default" value="保存" />
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

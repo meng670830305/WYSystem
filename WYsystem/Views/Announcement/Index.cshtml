@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WYsystem.Models.w_announcement>
+
+@{
+    ViewBag.Title = "お知らせ";
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row cm-fix-height">
+
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"> <h2>お知らせ管理</h2></div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr >
+                            <th>
+                                @Html.DisplayNameFor(model => model.number)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.createtime)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.contents)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.nickname)
+                            </th>
+                            <th>操作</th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.createtime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nickname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.contents)
+                        </td>
+                        <td>
+                            <a href="/Announcement/Edit/@item.id" class="btn btn-success">編集</a>
+                            <a href="/Announcement/DeleteConfirmed/@item.id" class="btn btn-danger" onclick="return confirm('削除しますか。')">削除</a>
+                        </td>
+                    </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

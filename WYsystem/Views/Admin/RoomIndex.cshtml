@@ -1,0 +1,77 @@
+﻿@model WYsystem.Models.w_room_info
+@{
+    ViewBag.Title = "団地管理";
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row cm-fix-height">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <h3>団地基本情報管理</h3>
+                    <table class="table table-bordered" style="margin-top:10px;">
+                        @if(Model != null)
+            {
+
+                        <tr>
+                            <th style="text-align:right;">団地名称：</th>
+                            <td>@Model.name</td>
+                            <th style="text-align:right;"> 連絡先：</th>
+                            <td>@Model.phone</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right;">責任者：</th>
+                            <td>@Model.link_name</td>
+                            <th style="text-align:right;"> 駐車場面積：</th>
+                            <td>@Model.stop_car_area</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right;">建築日付：</th>
+                            <td>@Model.construct_date</td>
+                            <th style="text-align:right;"> 道路面積：</th>
+                            <td>@Model.road_area</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right;">建築面積：</th>
+                            <td>@Model.room_area</td>
+                            <th style="text-align:right;"> 緑化面積：</th>
+                            <td>@Model.lh_area</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right;">建物棟数：</th>
+                            <td>@Model.room_number</td>
+                            <th style="text-align:right;"> 団地アドレス：</th>
+                            <td>@Model.address</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right;">団地説明：</th>
+                            <th colspan="3">@Model.remark</th>
+                        </tr>
+
+                        }
+                        else
+                        {
+                            <tr>
+                                <th style="text-align:center;">
+                                    団地情報を登録してください。
+                                    <a href="/Admin/AddRoom">団地登録</a>
+                                </th>
+                            </tr>
+                        }
+
+                    <tr>
+                        <th colspan="4" style="text-align:center;">
+                            <input type="button" class="btn btn-default"onclick="javascript: window.location.href = '/Admin/UpdateRoom';" value="編集" />
+                            <input type="button" class="btn btn-default" onclick="javascript: window.history.back();" value="戻る" />
+                        </th>
+
+                    </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
